@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 public class EditFlightActivity extends AppCompatActivity {
 
@@ -43,10 +41,9 @@ public class EditFlightActivity extends AppCompatActivity {
         flightNumberEditText.setText (flight.getFlightNumber ());
         departureAirportEditText.setText (flight.getDepartureAirport ());
         arrivalAirportEditText.setText ( flight.getArrivalAirport () );
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
-        String departureTimeString = dateFormat.format(flight.getDepartureTime());
+        String departureTimeString = flight.getDepartureTime();
         departureTimeEditText.setText(departureTimeString);
-        String arrivalTimeString = dateFormat.format(flight.getArrivalTime());
+        String arrivalTimeString = flight.getArrivalTime();
         arrivalTimeEditText.setText(arrivalTimeString);
 
 
@@ -55,8 +52,8 @@ public class EditFlightActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         try {
-                            flight.setDepartureTime (dateFormat.parse (departureTimeEditText.getText ( ).toString ( )));
-                            flight.setArrivalTime (dateFormat.parse (arrivalTimeEditText.getText ( ).toString ( )));
+                            flight.setDepartureTime (departureTimeEditText.getText ( ).toString ( ));
+                            flight.setArrivalTime (arrivalTimeEditText.getText ( ).toString ( ));
                             flight.setFlightNumber (flightNumberEditText.getText ( ).toString ( ));
                             flight.setDepartureAirport (departureAirportEditText.getText ( ).toString ( ));
                             flight.setArrivalAirport (arrivalAirportEditText.getText ( ).toString ( ));

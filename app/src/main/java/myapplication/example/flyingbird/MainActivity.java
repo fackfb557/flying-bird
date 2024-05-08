@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity {
   Button managerButton , customerButton;
-   private static final Date departureTime = new Date ();
-    private static final Date arrivalTime = new Date(System.currentTimeMillis() + 3600000);
-    public static  Flight flight = new Flight("1", "DXB", "GACA", departureTime, arrivalTime);
+
+    public static  Flight flight = new Flight("1", "DXB", "GACA", "10:00:00", "13:00:00");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);

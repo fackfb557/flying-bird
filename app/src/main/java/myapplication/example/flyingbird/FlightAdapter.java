@@ -11,9 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class FlightAdapter  extends ArrayAdapter<Flight> {
 
@@ -37,9 +35,9 @@ public class FlightAdapter  extends ArrayAdapter<Flight> {
 
         flightNumberTextView.setText("Flight Number: " + flight.getFlightNumber());
         airportsTextView.setText("From " + flight.getDepartureAirport() + " to " + flight.getArrivalAirport());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
-        startTimeTextView.setText("Start Time: " + simpleDateFormat.format(flight.getDepartureTime()));
-        endTimeTextView.setText("End Time: " + simpleDateFormat.format(flight.getArrivalTime()));
+
+        startTimeTextView.setText("Start Time: " +flight.getDepartureTime());
+        endTimeTextView.setText("End Time: " +flight.getArrivalTime());
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

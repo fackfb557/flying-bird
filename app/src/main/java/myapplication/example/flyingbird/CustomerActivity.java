@@ -8,9 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.Random;
 
 public class CustomerActivity extends AppCompatActivity {
@@ -47,12 +44,11 @@ public class CustomerActivity extends AppCompatActivity {
         flightNumberTextView.setText("Flight Number : "+flight.getFlightNumber());
         departureAirportTextView.setText("Departure Airport: " + flight.getDepartureAirport());
         arrivalAirportTextView.setText("Arrival Airport: " + flight.getArrivalAirport());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
-        departureTimeTextView.setText("Departure Time: " + simpleDateFormat.format(flight.getDepartureTime()));
-        arrivalTimeTextView.setText("Arrival Time: " + simpleDateFormat.format(flight.getArrivalTime()));
+        departureTimeTextView.setText("Departure Time: " + flight.getDepartureTime());
+        arrivalTimeTextView.setText("Arrival Time: " + flight.getArrivalTime());
         seatNumberTextView.setText("Seat Number: " +  new Random ().nextInt (1000));
-        long milliseconds = flight.calculateFlightDuration();
-        long seconds = milliseconds / 1000;
+
+        long seconds = flight.calculateFlightDuration();
         long hours = seconds / 3600;
         long minutes = (seconds % 3600) / 60;
         String durationString = String.format("%02d:%02d", hours, minutes);

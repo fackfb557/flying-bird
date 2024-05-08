@@ -1,16 +1,14 @@
 package myapplication.example.flyingbird;
 
-import java.util.Date;
-
 public class Flight {
 
         private String flightNumber;
         private String departureAirport;
         private String arrivalAirport;
-        private Date departureTime;
-        private Date arrivalTime;
+        private String departureTime;
+        private String arrivalTime;
 
-        public Flight(String flightNumber, String departureAirport, String arrivalAirport, Date departureTime, Date arrivalTime) {
+        public Flight(String flightNumber, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime) {
             this.flightNumber = flightNumber;
             this.departureAirport = departureAirport;
             this.arrivalAirport = arrivalAirport;
@@ -42,24 +40,38 @@ public class Flight {
             this.arrivalAirport = arrivalAirport;
         }
 
-        public Date getDepartureTime() {
+        public String getDepartureTime() {
             return departureTime;
         }
 
-        public void setDepartureTime(Date departureTime) {
+        public void setDepartureTime(String departureTime) {
             this.departureTime = departureTime;
         }
 
-        public Date getArrivalTime() {
+        public String getArrivalTime() {
             return arrivalTime;
         }
 
-        public void setArrivalTime(Date arrivalTime) {
+        public void setArrivalTime(String arrivalTime) {
             this.arrivalTime = arrivalTime;
         }
 
-        public long calculateFlightDuration() {
-            return arrivalTime.getTime() - departureTime.getTime();
-        }
+    public long calculateFlightDuration() {
+        String[] departureTokens = departureTime.split(":");
+        String[] arrivalTokens = arrivalTime.split(":");
+
+        int departureHours = Integer.parseInt(departureTokens[0]);
+        int departureMinutes = Integer.parseInt(departureTokens[1]);
+        int departureSeconds = Integer.parseInt(departureTokens[2]);
+
+        int arrivalHours = Integer.parseInt(arrivalTokens[0]);
+        int arrivalMinutes = Integer.parseInt(arrivalTokens[1]);
+        int arrivalSeconds = Integer.parseInt(arrivalTokens[2]);
+
+        long departureTotalSeconds = departureHours * 3600 + departureMinutes * 60 + departureSeconds;
+        long arrivalTotalSeconds = arrivalHours * 3600 + arrivalMinutes * 60 + arrivalSeconds;
+
+        return arrivalTotalSeconds - departureTotalSeconds;
+    }
 
 }
