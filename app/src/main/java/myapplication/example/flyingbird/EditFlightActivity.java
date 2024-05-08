@@ -42,7 +42,7 @@ public class EditFlightActivity extends AppCompatActivity {
         super.onStart ( );
         flightNumberEditText.setText (flight.getFlightNumber ());
         departureAirportEditText.setText (flight.getDepartureAirport ());
-        arrivalAirportEditText.setText (flight.getArrivalAirport ());
+        arrivalAirportEditText.setText ( flight.getArrivalAirport () );
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
         String departureTimeString = dateFormat.format(flight.getDepartureTime());
         departureTimeEditText.setText(departureTimeString);
